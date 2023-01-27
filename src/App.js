@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import List from './components/List';
+import Details from './components/Details';
 
 function App() {
+  const [activePerson, setActivePerson] = useState(null);
+
+  const openDetails = (info) => {
+    setActivePerson(info);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List onDetails={openDetails} />
+      <Details info={activePerson} />
     </div>
   );
 }
-
 export default App;
